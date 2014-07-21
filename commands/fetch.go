@@ -27,7 +27,7 @@ var fetchCmd = &cobra.Command{
 func init() {
 	fetchCmd.Flags().Int("rsstimeout", 600, "Timeout (in seconds) for RSS retrieval.")
 	// Binds the flag value to the config value.  So value could also appear in config file.
-	viper.BindPFlag("rsstimeout", fetchCmd.Flags().Lookup("rsstimout"))
+	viper.BindPFlag("rsstimeout", fetchCmd.Flags().Lookup("rsstimeout"))
 }
 
 func fetchRun(cmd *cobra.Command, args []string) {
@@ -54,7 +54,9 @@ func Fetcher() {
 }
 
 func PollFeed(uri string) {
-	timeout := viper.GetInt("rsstimout")
+	// continue at slide 138
+
+	timeout := viper.GetInt("rsstimeout")
 	if timeout < 60 {
 		timeout = 60
 	}
