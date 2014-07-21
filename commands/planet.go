@@ -21,6 +21,7 @@ func rootRun(cmd *cobra.Command, args []string) {
 }
 
 func Execute() {
+	addCommands()
 	err := RootCmd.Execute()
 	if err != nil {
 		fmt.Println(err)
@@ -44,4 +45,8 @@ func initConfig() {
 	viper.AddConfigPath("/etc/goplanet")
 	viper.AddConfigPath("$HOME/.goplanet")
 	viper.ReadInConfig()
+}
+
+func addCommands() {
+	RootCmd.AddCommand(fetchCmd)
 }
